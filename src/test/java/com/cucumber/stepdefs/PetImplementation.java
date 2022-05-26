@@ -30,7 +30,7 @@ public class PetImplementation implements Serializable {
     @Given("the following get request that bring us the pet by id")
     public Response getPets() {
         //Introducimos el código de la mascota
-        Response responseGetPets = given().log().all().get("/7777777");
+        Response responseGetPets = given().log().all().get("/55555");
 
         return responseGetPets;
     }
