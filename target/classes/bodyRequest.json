@@ -1,0 +1,18 @@
+{
+  "id": 55555,
+  "category": {
+    "id": 0,
+    "name": "string"
+  },
+  "name": "Pez morado",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "string"
+    }
+  ],
+  "status": "available"
+}
