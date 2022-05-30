@@ -1,7 +1,7 @@
 {
   "id": 55555,
-  "category": {"id": 0,"name": "string"},
-  "name": "Pez morado",
+  "category": { "id": 0,"name": "string"},
+  "name": "Pez morado update",
   "photoUrls": [
     "string"
   ],

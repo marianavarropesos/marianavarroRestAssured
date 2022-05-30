@@ -32,7 +32,7 @@ public class PetImplementation implements Serializable {
     }
 
 
-    //getPet
+    //getPetById
 
     @Given("the following get request that bring us the pet by id")
     public Response getPets() {
@@ -48,7 +48,7 @@ public class PetImplementation implements Serializable {
     }
 
 
-    //postPet
+    //postPet-------------------------------------------------------------------------------------------------
 
     @Given("the following post request to add pets")
     public void PostPets() {
@@ -58,6 +58,10 @@ public class PetImplementation implements Serializable {
 
     }
 
+    @And("the response is 200 for post")
+    public void validateResponsePost() {
+        assertTrue("The response is not 200", postPets.statusCode() == 200);
+    }
 
     @Then("the body response contains the {string} of the new pet")
     public void validateResponsePostValueName(String valueName) {
@@ -67,6 +71,40 @@ public class PetImplementation implements Serializable {
 
     }
 
+    //putPets------------------------------
+    @Given("the following post request to update a pet")
+    public void PutPets() {
+
+        File fileBodyRequest = new File("src/main/resources/bodyRequestUpdate.json");
+        putPets = given().contentType(ContentType.JSON).body(fileBodyRequest).put();
+
+    }
+
+    @And("the response is 200 for put")
+    public void validateResponsePut() {
+        assertTrue("The response is not 200", putPets.statusCode() == 200);
+    }
+
+    @Then("the body response contains the {string} of the pet updated")
+    public void validatePetUpdate(String valueName) {
+        JsonPath jsonPathUsers = new JsonPath(putPets.body().asString());
+        String jsonUsers = jsonPathUsers.getString("name");
+        assertEquals("The value of the name is not correct", valueName, jsonUsers);
+
+    }
 
 
+    //deletePets
+
+    @Given("the following request that delete a pet")
+    public void deletePets() {
+
+        deletePets = given().log().all().delete("/88888888");
+
+    }
+
+    @Then("the response is 200 for delete")
+    public void validateResponseDelete() {
+        assertEquals("The response is not 200", deletePets.statusCode() , 200);
+    }
 }
